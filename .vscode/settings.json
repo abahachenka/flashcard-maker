@@ -1,0 +1,18 @@
+{
+    "emmet.excludeLanguages": [
+
+        "markdown"
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "prettier.cssEnable": [
+
+        "css",
+        "less",
+        "scss",
+        "postcss"
+    ],
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
