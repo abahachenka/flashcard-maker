@@ -1,0 +1,13 @@
+@import "../scss/index";
+
+.pageHeader {
+  background: $black;
+  color: $white;
+  padding: 2.5em 0;
+
+  &Title {
+    font-size: 3.4em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}

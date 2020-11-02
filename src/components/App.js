@@ -1,8 +1,7 @@
-import React from "react";
-import AddCard from "@components/AddCard";
-import CardsList from "@components/CardsList";
-import CardContext from "@/context.js";
-import styles from "@components/App.css";
+import React from 'react';
+import CardsList from '@components/CardsList';
+import CardContext from '@/context/CardContext';
+import styles from '@components/App.scss';
 
 export default function App() {
   const [cards, setCards] = React.useState([]);
@@ -10,25 +9,48 @@ export default function App() {
   function addCard() {
     const newCard = {
       label: `Test Label ${cards.length + 1}`,
-      img: "/",
+      img: '/',
       id: cards.length + 1,
     };
 
-    setCards(cards.concat([newCard]));
+    setCards((prevCards) => prevCards.concat([newCard]));
+  }
+
+  function updateCard(card) {
+    setCards((prevCards) => {
+      return prevCards.map((item) => {
+        if (item.id === card.id) {
+          return card;
+        }
+        return item;
+      });
+    });
   }
 
   function removeCard(id) {
-    setCards(cards.filter((card) => card.id !== id));
+    setCards((prevCards) => prevCards.filter((card) => card.id !== id));
   }
 
+  const cardAPI = {
+    addCard,
+    updateCard,
+    removeCard,
+  };
+
   return (
-    <CardContext.Provider value={{ removeCard }}>
+    <React.Fragment>
+      <header className={styles.pageHeader}>
+        <div className={styles.container}>
+          <h1 className={styles.pageHeaderTitle}>Flashcards Maker</h1>
+        </div>
+      </header>
       <div className={styles.container}>
-        <h1>This is the Flashcards Maker</h1>
-        {/* add flashcard type switcher*/}
-        <CardsList cards={cards} />
-        <AddCard addCard={addCard} />
+        <div className={styles.cards}>
+          <CardContext.Provider value={cardAPI}>
+            <CardsList cards={cards} />
+          </CardContext.Provider>
+        </div>
       </div>
-    </CardContext.Provider>
+    </React.Fragment>
   );
 }

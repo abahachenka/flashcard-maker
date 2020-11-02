@@ -1,0 +1,8 @@
+@import '../scss/index';
+
+.addCard {
+  &:hover {
+    color: $white;
+    background: $light-grey;
+  }
+}

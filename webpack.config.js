@@ -35,11 +35,11 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     publicPath: ASSET_PATH,
   },
+  devtool: 'source-map',
   resolve: {
     extensions: [".js", ".json"],
     alias: {
-      "@": path.resolve(__dirname, "src"),
-      "@components": path.resolve(__dirname, "src/components"),
+      "@": path.resolve(__dirname, "src")
     },
   },
   optimization: optimization(),
@@ -69,11 +69,14 @@ module.exports = {
         test: /\.(sass|scss)$/,
         use: [
           {
+            loader: "style-loader",
+          },
+          {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
               sourceMap: isDev,
               modules: {
-                localIdentName: "[path]_[name]_[local]",
+                localIdentName: "[local]",
               },
             },
           },
@@ -96,9 +99,16 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
+            sourceMap: true,
             presets: ["@babel/preset-env", "@babel/preset-react"],
+            retainLines: true
           },
         },
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
       },
     ],
   },
