@@ -2,9 +2,9 @@
 
 .card {
   display: flex;
-  height: 13.5em; // 270px
-  width: 9em; // 180px
-  background: grey;
+  height: 15em;
+  width: 10em;
+  background: $white;
   border: 0.1rem solid $black;
   font-size: 2rem;
   text-align: center;
@@ -20,14 +20,66 @@
     margin-right: 0;
   }
 
-  &Title {
-    font-size: 1em;
+  &_horizontal {
+    width: 15em; // 270px
+    height: 10em; // 180px
   }
 
-  &Image {
-    width: 100%;
+  &__title {
+    font-size: 1em;
+    margin: 0;
+  }
+
+  &__image {
+    border: 1px $black dotted;
     display: flex;
-    background: cadetblue;
-    height: 50%;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 80%;
+    margin: 0 auto 20px;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__image-upload {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__upload-btn {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: url(../assets/img/upload-img.png) center/50px 50px no-repeat;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__upload-browse {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.add-card {
+  &:hover {
+    color: $white;
+    background: $light-grey;
+  }
+
+  @media print {
+    display: none;
   }
 }

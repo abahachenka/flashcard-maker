@@ -1,0 +1,32 @@
+@import '../scss/index.scss';
+
+.settings {
+  margin: 2rem 0;
+  font-size: 2em;
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__group {
+    margin: 2rem 0;
+
+    label {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__submit {
+    padding: 1rem 2rem;
+    background: $black;
+    color: $white;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+      background: #585858;
+      cursor: pointer;
+    }
+  }
+}

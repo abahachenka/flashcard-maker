@@ -1,15 +1,20 @@
-import React from 'react';
-import CardsList from '@components/CardsList';
+import React, { useState, useRef } from 'react';
+import Header from './Header';
+import CardsList from './CardsList';
+import Settings from './Settings';
 import CardContext from '@/context/CardContext';
-import styles from '@components/App.scss';
+import '@/scss/index.scss';
 
 export default function App() {
-  const [cards, setCards] = React.useState([]);
+  const [cards, setCards] = useState([]);
+  const [cardSettings, setSettings] = useState({});
+  const [isSettingsMode, toggleSettingsMode] = useState(true);
+  const cardsContainerRef = useRef();
 
   function addCard() {
     const newCard = {
       label: `Test Label ${cards.length + 1}`,
-      img: '/',
+      img: null,
       id: cards.length + 1,
     };
 
@@ -31,25 +36,36 @@ export default function App() {
     setCards((prevCards) => prevCards.filter((card) => card.id !== id));
   }
 
+  function applySettings(settings) {
+    toggleSettingsMode((current) => !current);
+    setSettings(settings);
+  }
+
+  function onPrint() {
+    window.print();
+  }
+
   const cardAPI = {
     addCard,
     updateCard,
     removeCard,
+    cardSettings,
   };
 
   return (
     <React.Fragment>
-      <header className={styles.pageHeader}>
-        <div className={styles.container}>
-          <h1 className={styles.pageHeaderTitle}>Flashcards Maker</h1>
-        </div>
-      </header>
-      <div className={styles.container}>
-        <div className={styles.cards}>
+      <Header />
+      <div className='container'>
+        {isSettingsMode ? (
+          <Settings onSubmit={applySettings} />
+        ) : (
           <CardContext.Provider value={cardAPI}>
             <CardsList cards={cards} />
+            <button onClick={onPrint} className='print-btn'>
+              Print
+            </button>
           </CardContext.Provider>
-        </div>
+        )}
       </div>
     </React.Fragment>
   );

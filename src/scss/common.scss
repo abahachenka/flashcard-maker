@@ -18,6 +18,8 @@ body {
   padding: 0 2rem;
 }
 
-.cards {
-  margin: 2rem 0;
+.print-btn {
+  @media print {
+    display: none;
+  }
 }
