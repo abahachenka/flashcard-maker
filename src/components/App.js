@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import CardsList from './CardsList';
 import Settings from './Settings';
@@ -8,8 +8,6 @@ import '@/scss/index.scss';
 export default function App() {
   const [cards, setCards] = useState([]);
   const [cardSettings, setSettings] = useState({});
-  const [isSettingsMode, toggleSettingsMode] = useState(true);
-  const cardsContainerRef = useRef();
 
   function addCard() {
     const newCard = {
@@ -37,7 +35,6 @@ export default function App() {
   }
 
   function applySettings(settings) {
-    toggleSettingsMode((current) => !current);
     setSettings(settings);
   }
 
@@ -56,16 +53,13 @@ export default function App() {
     <React.Fragment>
       <Header />
       <div className='container'>
-        {isSettingsMode ? (
-          <Settings onSubmit={applySettings} />
-        ) : (
-          <CardContext.Provider value={cardAPI}>
-            <CardsList cards={cards} />
-            <button onClick={onPrint} className='print-btn'>
-              Print
-            </button>
-          </CardContext.Provider>
-        )}
+        <Settings onSubmit={applySettings} />
+        <CardContext.Provider value={cardAPI}>
+          <CardsList cards={cards} />
+          <button onClick={onPrint} className='print-btn'>
+            Print
+          </button>
+        </CardContext.Provider>
       </div>
     </React.Fragment>
   );

@@ -16,6 +16,12 @@
   border-radius: 0.3em;
   flex-direction: column;
 
+  @media print {
+    border: 0.1rem dashed $black;
+    border-radius: 0;
+    margin: 0;
+  }
+
   &:last-child {
     margin-right: 0;
   }
@@ -39,6 +45,10 @@
     width: 80%;
     margin: 0 auto 20px;
     overflow: hidden;
+
+    @media print {
+      border: none;
+    }
 
     img {
       max-width: 100%;
@@ -78,6 +88,21 @@
     color: $white;
     background: $light-grey;
   }
+
+  @media print {
+    display: none;
+  }
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  display: inline;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  top: 17px;
 
   @media print {
     display: none;

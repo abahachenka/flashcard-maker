@@ -1,15 +1,28 @@
 @import '../scss/index.scss';
 
 .settings {
+  color: $dark-grey;
   margin: 2rem 0;
   font-size: 2em;
+  display: flex;
+  justify-content: center;
+  border: 0.1rem solid $dark-grey;
+  border-radius: $borderRadiusDefault;
 
   &__title {
     text-transform: uppercase;
+    margin-top: 0;
   }
 
   &__group {
-    margin: 2rem 0;
+    border-right: 0.1rem solid $dark-grey;
+    padding: 1.5rem;
+    flex: 1 1 50%;
+    text-align: center;
+
+    &:last-child {
+      border-right: 0;
+    }
 
     label {
       margin-right: 1.5rem;
@@ -22,11 +35,50 @@
     color: $white;
     text-transform: uppercase;
     border: none;
-    border-radius: 3px;
+    border-radius: $borderRadiusDefault;
 
     &:hover {
       background: #585858;
       cursor: pointer;
+    }
+  }
+}
+
+.setting-preview {
+  display: flex;
+  justify-content: center;
+
+  &__card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $dark-grey;
+    padding: 1rem;
+    height: 6rem;
+    width: 5rem;
+    border-radius: $borderRadiusDefault;
+    margin: 0 5px;
+    cursor: pointer;
+
+    &_active {
+      border: 2px solid $pacificBlue;
+      color: $pacificBlue;
+    }
+
+    &_horizontal {
+      width: 6rem;
+      height: 4.5rem;
+    }
+
+    svg {
+      margin-bottom: 0.5rem;
+      font-size: 1.5em;
+    }
+
+    &-text {
+      display: block;
+      font-weight: 700;
     }
   }
 }

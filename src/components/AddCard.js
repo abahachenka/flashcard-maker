@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './Card.scss';
 import CardContext from '@/context/CardContext';
-import { ORIENTATION_H, TYPE_IMG_WORDS } from '@/constants';
+import { ORIENTATION_H } from '@/constants';
 
 const AddCard = () => {
   const { addCard, cardSettings } = useContext(CardContext);

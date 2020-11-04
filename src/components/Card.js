@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CardContext from '@/context/CardContext';
 import RemoveCard from './RemoveCard';
 import './Card.scss';
-import { ORIENTATION_H, TYPE_IMG_WORDS } from '@/constants';
+import { ORIENTATION_H, TYPE_IMG_TEXT } from '@/constants';
 
 function Card({ card }) {
   const [isEditMode, toggleEditMode] = useState(0);
@@ -58,7 +58,7 @@ function Card({ card }) {
 
   return (
     <li className={cardClassName}>
-      {cardSettings.type === TYPE_IMG_WORDS ? (
+      {cardSettings.type === TYPE_IMG_TEXT ? (
         <div className='card__image'>
           {card.img ? (
             <img src='' ref={imgRef} alt='' />

@@ -1,5 +1,5 @@
-export const TYPE_IMG_WORDS = 'imgWords';
-export const TYPE_WORDS = 'words';
+export const TYPE_IMG_TEXT = 'imgText';
+export const TYPE_TEXT = 'text';
 
 export const ORIENTATION_H = 'horizontal';
 export const ORIENTATION_V = 'vertical';

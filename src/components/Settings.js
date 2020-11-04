@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import TypeSwitcher from './TypeSwitcher';
 import CardOrientation from './CardOrientation';
 import SettingsContext from '@/context/SettingsContext';
+import { TYPE_IMG_TEXT, ORIENTATION_V } from '@/constants';
 import './Settings.scss';
 
 export default function Settings({ onSubmit }) {
   const [settings, setSettings] = useState({
-    type: 'imgWords',
-    orientation: 'vertical',
+    type: TYPE_IMG_TEXT,
+    orientation: ORIENTATION_V,
+    cardsPerList: 2, // 2,4,6,8,10
   });
 
   function submitSettings(e) {
@@ -37,12 +39,10 @@ export default function Settings({ onSubmit }) {
 
   return (
     <form className='settings' onSubmit={submitSettings}>
-      <h2 className='settings__title'>Set-up card settings</h2>
       <SettingsContext.Provider value={settingsAPI}>
         <TypeSwitcher type={type} />
         <CardOrientation orientation={orientation} />
       </SettingsContext.Provider>
-      <input type='submit' value='Ok' className='settings__submit' />
     </form>
   );
 }
