@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import CardContext from '@/context/CardContext';
+import React from 'react';
+import { useSettingsActions } from '@/context/SettingsContext';
 
 function RemoveCard({ id }) {
-  const { removeCard } = useContext(CardContext);
+  const { removeCard } = useSettingsActions();
 
   return (
     <button className='remove-btn' onClick={() => removeCard(id)}>

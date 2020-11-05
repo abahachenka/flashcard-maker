@@ -1,22 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Card from './Card';
 import AddCard from './AddCard';
+import { useCardState } from '@/context/CardContext';
 import './CardsList.scss';
 
-function CardsList({ cards }) {
+export default function CardsList() {
+  const cards = useCardState();
+
   return (
     <ul className='cards-list'>
-      {cards.map((card, index) => {
-        return <Card card={card} key={index} />;
-      })}
-      <AddCard />
+      <React.Fragment>
+        {cards.map((card, index) => {
+          return <Card card={card} key={index} />;
+        })}
+        <AddCard />
+      </React.Fragment>
     </ul>
   );
 }
-
-CardsList.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-export default CardsList;

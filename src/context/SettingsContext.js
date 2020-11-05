@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, createContext } from 'react';
 import { TYPE_IMG_TEXT, ORIENTATION_V } from '@/constants';
 
-const SettingsContext = React.createContext();
+const SettingsContext = createContext();
 
 export function SettingsContextProvider({ children }) {
   const [settings, setSettings] = useState({

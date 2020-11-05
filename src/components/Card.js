@@ -1,13 +1,16 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useRef } from 'react';
+import cn from 'classnames';
 import PropTypes from 'prop-types';
-import CardContext from '@/context/CardContext';
 import RemoveCard from './RemoveCard';
-import './Card.scss';
+import { useCardActions } from '@/context/CardContext';
+import { useSettingsState } from '@/context/SettingsContext';
 import { ORIENTATION_H, TYPE_IMG_TEXT } from '@/constants';
+import './Card.scss';
 
 function Card({ card }) {
   const [isEditMode, toggleEditMode] = useState(0);
-  const { updateCard, cardSettings } = useContext(CardContext);
+  const { updateCard } = useCardActions();
+  const { orientation, type } = useSettingsState();
   const fileRef = useRef();
   const imgRef = useRef();
 
@@ -51,14 +54,12 @@ function Card({ card }) {
     updateCard(newCard);
   }
 
-  const cardClassName =
-    cardSettings.orientation === ORIENTATION_H
-      ? 'card card_horizontal'
-      : 'card';
-
   return (
-    <li className={cardClassName}>
-      {cardSettings.type === TYPE_IMG_TEXT ? (
+    <li
+      className={cn('card', {
+        card_horizontal: orientation === ORIENTATION_H,
+      })}>
+      {type === TYPE_IMG_TEXT ? (
         <div className='card__image'>
           {card.img ? (
             <img src='' ref={imgRef} alt='' />
