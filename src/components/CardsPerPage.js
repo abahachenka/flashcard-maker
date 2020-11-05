@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
-import SettingsContext from '@/context/SettingsContext';
+import React from 'react';
+import {
+  useSettingsActions,
+  useSettingsState,
+} from '@/context/SettingsContext';
 
-export default function CardsNumber({ cardsPerPage }) {
-  const { updateCardsPerPage } = useContext(SettingsContext);
+export default function CardsNumber() {
+  const { updateCardsPerPage } = useSettingsActions();
+  const { cardsPerPage } = useSettingsState();
 
   return (
     <div className='settings__group'>

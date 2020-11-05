@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import cn from 'classnames';
-import SettingsContext from '@/context/SettingsContext';
+import {
+  useSettingsActions,
+  useSettingsState,
+} from '@/context/SettingsContext';
 import { ORIENTATION_V, ORIENTATION_H } from '@/constants';
 
-export default function CardOrientation({ orientation }) {
-  const { updateOrientation } = useContext(SettingsContext);
+export default function CardOrientation() {
+  const { updateOrientation } = useSettingsActions();
+  const { orientation } = useSettingsState();
 
   return (
     <div className='settings__group'>

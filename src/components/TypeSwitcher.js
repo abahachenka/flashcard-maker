@@ -1,12 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
-import SettingsContext from '@/context/SettingsContext';
+import {
+  useSettingsActions,
+  useSettingsState,
+} from '@/context/SettingsContext';
 import { TYPE_IMG_TEXT, TYPE_TEXT } from '@/constants';
 
-export default function TypeSwitcher({ type }) {
-  const { updateType } = useContext(SettingsContext);
+export default function TypeSwitcher() {
+  const { updateType } = useSettingsActions();
+  const { type } = useSettingsState();
 
   return (
     <div className='settings__group'>
