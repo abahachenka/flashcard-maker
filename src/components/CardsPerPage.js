@@ -3,19 +3,20 @@ import {
   useSettingsActions,
   useSettingsState,
 } from '@/context/SettingsContext';
+import styles from './Settings.module.scss';
 
 export default function CardsNumber() {
   const { updateCardsPerPage } = useSettingsActions();
   const { cardsPerPage } = useSettingsState();
 
   return (
-    <div className='settings__group'>
-      <h3 className='settings__title'>Cards per page</h3>
+    <div className={styles['settings__group']}>
+      <h3 className={styles['settings__title']}>Cards per page</h3>
 
-      <div className='setting-preview'>
+      <div className={styles['setting-preview']}>
         <select
           defaultValue={cardsPerPage}
-          className='setting-preview__cards-number'
+          className={styles['setting-preview__cards-number']}
           onChange={(e) => updateCardsPerPage(parseInt(e.target.value))}>
           <option value='2'>2</option>
           <option value='4'>4</option>

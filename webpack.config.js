@@ -4,10 +4,10 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'dev';
-const isProd = !isDev;
+const isProd = process.env.NODE_ENV === 'prod';
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 const optimization = () => {
@@ -18,13 +18,33 @@ const optimization = () => {
   };
 
   if (isProd) {
-    config.minimizer = [new OptimizeCssAssetsPlugin()];
+    config.minimize = true;
+    config.minimizer = [new OptimizeCssAssetsPlugin(), new TerserPlugin()];
   }
 
   return config;
 };
 
-const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
+const filename = (ext) =>
+  isDev ? `[name].${ext}` : `[name].[fullhash].${ext}`;
+
+const CSSModuleLoader = {
+  loader: 'css-loader', // translates CSS into CommonJS
+  options: {
+    sourceMap: isDev,
+    modules: {
+      localIdentName: isDev ? '[local]___[hash:base64:5]' : '[hash:base64:5]',
+    },
+  },
+};
+
+const CSSLoader = {
+  loader: 'css-loader',
+  options: {
+    modules: false,
+    sourceMap: isDev,
+  },
+};
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -35,7 +55,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
   },
-  devtool: 'source-map',
+  devtool: isDev ? 'source-map' : false,
   resolve: {
     extensions: ['.js', '.json'],
     alias: {
@@ -48,13 +68,13 @@ module.exports = {
     open: true,
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
       template: './index.html',
       minify: {
         collapseWhitespace: isProd,
       },
     }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
@@ -66,24 +86,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(sass|scss)$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader', // translates CSS into CommonJS
-            options: {
-              sourceMap: isDev,
-              modules: {
-                localIdentName: '[local]',
-              },
-            },
-          },
-          {
-            loader: 'sass-loader', // compiles Sass to CSS
-          },
-        ],
+        test: /\.module\.scss$/,
+        use: ['style-loader', CSSModuleLoader, 'sass-loader'],
+      },
+      {
+        test: /\.scss$/,
+        exclude: /\.module\.scss$/,
+        use: ['style-loader', CSSLoader, 'sass-loader'],
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -99,9 +108,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            sourceMap: true,
+            sourceMap: false,
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            retainLines: true,
+            retainLines: isDev,
+            minified: isProd,
           },
         },
       },
