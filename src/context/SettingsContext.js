@@ -7,7 +7,7 @@ export function SettingsContextProvider({ children }) {
   const [settings, setSettings] = useState({
     type: TYPE_IMG_TEXT,
     orientation: ORIENTATION_V,
-    cardsPerPage: '2', // 2,4,6,8,10
+    cardsPerPage: 2, // 2,4,6,8,10
   });
 
   function updateType(type) {
