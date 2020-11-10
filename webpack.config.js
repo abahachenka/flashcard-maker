@@ -88,12 +88,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.module\.scss$/,
+        test: /\.scss$/,
+        exclude: __dirname + '/src/scss',
         use: ['style-loader', CSSModuleLoader, 'sass-loader'],
       },
       {
         test: /\.scss$/,
-        exclude: /\.module\.scss$/,
+        include: __dirname + '/src/scss',
         use: ['style-loader', CSSLoader, 'sass-loader'],
       },
       {

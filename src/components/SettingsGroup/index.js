@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SettingsGroup.module.scss';
+import styles from './styles.scss';
 
 export default function SettingsGroup({ title, children }) {
   return (

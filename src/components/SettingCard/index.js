@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './SettingCard.module.scss';
+import styles from './styles.scss';
 
 export default function SettingCard({
   isActive,

@@ -4,7 +4,7 @@ import {
   useSettingsState,
 } from '@/context/SettingsContext';
 import SettingsGroup from '@/components/SettingsGroup';
-import styles from './CardsPerPage.module.scss';
+import styles from './styles.scss';
 
 export default function CardsNumber() {
   const { updateCardsPerPage } = useSettingsActions();

@@ -4,8 +4,8 @@ import Header from '@/components/Header';
 import Settings from '@/components/Settings';
 import { CardContextProvider } from '@/context/CardContext';
 import { SettingsContextProvider } from '@/context/SettingsContext';
-import '../../scss/global.scss';
-import styles from './App.module.scss';
+import '@/scss/global.scss';
+import styles from './styles.scss';
 
 export default function App() {
   function onPrint() {
