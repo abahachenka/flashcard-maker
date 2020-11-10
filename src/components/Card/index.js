@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
-import RemoveCard from './RemoveCard';
+import RemoveCard from '@/components/RemoveCard';
 import { useCardActions } from '@/context/CardContext';
 import { useSettingsState } from '@/context/SettingsContext';
 import { ORIENTATION_H, TYPE_IMG_TEXT } from '@/constants';
-import './Card.scss';
+import styles from './styles.scss';
 
 function Card({ card }) {
   const [isEditMode, toggleEditMode] = useState(0);
@@ -56,20 +56,20 @@ function Card({ card }) {
 
   return (
     <li
-      className={cn('card', {
-        card_horizontal: orientation === ORIENTATION_H,
+      className={cn(styles.card, {
+        [styles.cardHorizontal]: orientation === ORIENTATION_H,
       })}>
       {type === TYPE_IMG_TEXT ? (
-        <div className='card__image'>
+        <div className={styles.cardImage}>
           {card.img ? (
             <img src='' ref={imgRef} alt='' />
           ) : (
-            <div className='card__image-upload'>
+            <div className={styles.cardImageUpload}>
               <label
                 htmlFor='upload-image'
-                className='card__upload-btn'></label>
+                className={styles.cardUploadBtn}></label>
               <input
-                className='card__upload-browse'
+                className={styles.cardUploadBrowse}
                 type='file'
                 name='image'
                 id='upload-image'
@@ -84,7 +84,7 @@ function Card({ card }) {
       {isEditMode ? (
         <input type='text' onBlur={editModeToggle} onChange={onTitleChange} />
       ) : (
-        <h2 className='card__title' onClick={editModeToggle}>
+        <h2 className={styles.cardTitle} onClick={editModeToggle}>
           {card.label}
         </h2>
       )}

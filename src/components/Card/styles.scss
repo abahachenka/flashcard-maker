@@ -1,11 +1,11 @@
-@import '../scss/index';
+@use '@/scss/variables/colors.scss' as colors;
 
 .card {
   display: flex;
   height: 15em;
   width: 10em;
-  background: $white;
-  border: 0.1rem solid $black;
+  background: colors.$white;
+  border: 0.1rem solid colors.$black;
   font-size: 2rem;
   text-align: center;
   position: relative;
@@ -17,7 +17,7 @@
   flex-direction: column;
 
   @media print {
-    border: 0.1rem dashed $black;
+    border: 0.1rem dashed colors.$black;
     border-radius: 0;
     margin: 0;
   }
@@ -26,18 +26,18 @@
     margin-right: 0;
   }
 
-  &_horizontal {
+  &Horizontal {
     width: 15em; // 270px
     height: 10em; // 180px
   }
 
-  &__title {
+  &Title {
     font-size: 1em;
     margin: 0;
   }
 
-  &__image {
-    border: 1px $black dotted;
+  &Image {
+    border: 1px colors.$black dotted;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,57 +54,31 @@
       max-width: 100%;
       max-height: 100%;
     }
+
+    &Upload {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
   }
 
-  &__image-upload {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
-
-  &__upload-btn {
+  &UploadBtn {
     display: inline-block;
     height: 100%;
     width: 100%;
-    background: url(../assets/img/upload-img.png) center/50px 50px no-repeat;
+    background: url(@/assets/img/upload-img.png) center/50px 50px no-repeat;
 
     &:hover {
       opacity: 0.8;
     }
   }
 
-  &__upload-browse {
+  &UploadBrowse {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-}
-
-.add-card {
-  &:hover {
-    color: $white;
-    background: $light-grey;
-  }
-
-  @media print {
-    display: none;
-  }
-}
-
-.remove-btn {
-  background: transparent;
-  border: none;
-  display: inline;
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  right: 10px;
-  top: 17px;
-
-  @media print {
-    display: none;
   }
 }

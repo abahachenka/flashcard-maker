@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from './Card';
-import AddCard from './AddCard';
-import Sheet from './Sheet';
+import Card from '@/components/Card';
+import AddCard from '../AddCard';
+import Sheet from '../Sheet';
 import { useCardState } from '@/context/CardContext';
 import { useSettingsState } from '@/context/SettingsContext';
-import './CardsList.scss';
+import styles from './styles.scss';
 
 export default function CardsList() {
   const cards = useCardState();
@@ -40,7 +40,7 @@ export default function CardsList() {
     for (let i = 0; i < sheetsNumber; i++) {
       sheet = (
         <Sheet key={i}>
-          <ul className='cards-list'>{generateCardsJSX(i)}</ul>
+          <ul className={styles.cardsList}>{generateCardsJSX(i)}</ul>
         </Sheet>
       );
 

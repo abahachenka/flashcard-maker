@@ -1,0 +1,12 @@
+@use '@/scss/variables/colors.scss' as colors;
+@use '@/scss/variables/sizes.scss' as sizes;
+
+.sheet {
+  background: colors.$white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  width: sizes.$paperWidth;
+  height: sizes.$paperHeight;
+  border: 1px dashed colors.$black;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@/components/Header';
-// import CardsList from '../CardsList';
+import CardsList from '@/components/CardsList';
 import Settings from '@/components/Settings';
 import { CardContextProvider } from '@/context/CardContext';
 import { SettingsContextProvider } from '@/context/SettingsContext';
@@ -16,14 +16,12 @@ export default function App() {
     <React.Fragment>
       <Header />
       <div className={styles.appContainer}>
-        {
-          <SettingsContextProvider>
-            <Settings />
-            {/* <CardContextProvider>
+        <SettingsContextProvider>
+          <Settings />
+          <CardContextProvider>
             <CardsList />
-          </CardContextProvider> */}
-          </SettingsContextProvider>
-        }
+          </CardContextProvider>
+        </SettingsContextProvider>
         <button onClick={onPrint} className={styles.printBtn}>
           Print
         </button>

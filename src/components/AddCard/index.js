@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useSettingsState } from '@/context/SettingsContext';
 import { useCardActions } from '@/context/CardContext';
 import { ORIENTATION_H } from '@/constants';
-import './Card.scss';
+import styles from './styles.scss';
 
 const AddCard = () => {
   const { addCard } = useCardActions();
@@ -12,8 +12,8 @@ const AddCard = () => {
   return (
     <button
       onClick={addCard}
-      className={cn('card', 'add-card', {
-        card_horizontal: orientation === ORIENTATION_H,
+      className={cn(styles.addCardBtn, {
+        [styles.addCardBtnHorizontal]: orientation === ORIENTATION_H,
       })}>
       +
     </button>

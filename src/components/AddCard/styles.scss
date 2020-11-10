@@ -1,0 +1,18 @@
+@use '@/scss/variables/colors.scss' as colors;
+
+.addCardBtn {
+  composes: card from '@/components/Card/styles.scss';
+
+  &:hover {
+    color: colors.$white;
+    background: colors.$lightGrey;
+  }
+
+  &Horizontal {
+    composes: cardHorizontal from '@/components/Card/styles.scss';
+  }
+
+  @media print {
+    display: none;
+  }
+}
