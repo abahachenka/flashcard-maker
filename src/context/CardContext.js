@@ -11,12 +11,11 @@ export function CardContextProvider({ children }) {
 
   const [cards, setCards] = useState([
     emptyCard,
-    emptyCard,
-    emptyCard,
-    emptyCard,
-    emptyCard,
-    emptyCard,
-    emptyCard,
+    { ...emptyCard, id: 2 },
+    { ...emptyCard, id: 3 },
+    { ...emptyCard, id: 4 },
+    { ...emptyCard, id: 5 },
+    { ...emptyCard, id: 6 },
   ]);
 
   function addCard() {

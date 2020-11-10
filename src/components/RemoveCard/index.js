@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSettingsActions } from '@/context/SettingsContext';
+import { useCardActions } from '@/context/CardContext';
 import styles from './styles.scss';
 
 function RemoveCard({ id }) {
-  const { removeCard } = useSettingsActions();
+  const { removeCard } = useCardActions();
 
   return (
     <button className={styles.removeBtn} onClick={() => removeCard(id)}>
