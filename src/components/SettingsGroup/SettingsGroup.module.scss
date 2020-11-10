@@ -1,0 +1,36 @@
+@use '../../scss/variables/colors.scss' as colors;
+
+.settingsGroup {
+  border-right: 0.1rem solid colors.$darkGrey;
+  padding: 1.5rem;
+  flex: 1 1 50%;
+  text-align: center;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &Title {
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+}
+
+.settingsPreview {
+  display: flex;
+  justify-content: center;
+}
+
+// &__submit {
+//   padding: 1rem 2rem;
+//   background: colors.$black;
+//   color: colors.$white;
+//   text-transform: uppercase;
+//   border: none;
+//   border-radius: 0.3rem;
+
+//   &:hover {
+//     background: #585858;
+//     cursor: pointer;
+//   }
+// }

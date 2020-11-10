@@ -1,0 +1,12 @@
+@use '../../scss/variables/colors.scss' as colors;
+
+.settings {
+  background: colors.$white;
+  color: colors.$darkGrey;
+  margin: 2rem 0;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  border: 0.1rem solid colors.$darkGrey;
+  border-radius: 0.3rem;
+}

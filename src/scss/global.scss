@@ -1,0 +1,15 @@
+@use './variables/typography' as typography;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-size: typography.$fontSizeDefault;
+}
+
+body {
+  font-family: typography.$fontFamilyDefault;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import TypeSwitcher from './TypeSwitcher';
-import CardOrientation from './CardOrientation';
-import CardsPerPage from './CardsPerPage';
+import TypeSwitcher from '@/components/TypeSwitcher';
+import CardOrientation from '@/components/CardOrientation';
+import CardsPerPage from '@/components/CardsPerPage';
 import styles from './Settings.module.scss';
 
 export default function Settings() {

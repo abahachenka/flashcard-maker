@@ -1,0 +1,11 @@
+.app {
+  &Container {
+    composes: container from '../../scss/box.scss';
+  }
+}
+
+.print-btn {
+  @media print {
+    display: none;
+  }
+}

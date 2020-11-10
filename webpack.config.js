@@ -35,6 +35,7 @@ const CSSModuleLoader = {
     modules: {
       localIdentName: isDev ? '[local]___[hash:base64:5]' : '[hash:base64:5]',
     },
+    importLoaders: 1,
   },
 };
 
@@ -43,6 +44,7 @@ const CSSLoader = {
   options: {
     modules: false,
     sourceMap: isDev,
+    importLoaders: 1,
   },
 };
 

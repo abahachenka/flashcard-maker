@@ -1,0 +1,7 @@
+@use './variables/sizes.scss' as sizes;
+
+.container {
+  width: clamp(sizes.$min-width, 100%, sizes.$max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}

@@ -1,0 +1,21 @@
+@use '@/scss/variables/colors' as colors;
+
+.header {
+  background: colors.$black;
+  color: colors.$white;
+  padding: 2.5em 0;
+
+  &Container {
+    composes: container from '@/scss/box.scss';
+  }
+
+  &Title {
+    font-size: 3.4em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  @media print {
+    display: none;
+  }
+}
