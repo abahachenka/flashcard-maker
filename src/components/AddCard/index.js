@@ -7,13 +7,15 @@ import styles from './styles.scss';
 
 const AddCard = () => {
   const { addCard } = useCardActions();
-  const { orientation } = useSettingsState();
+  const { orientation, cardsPerPage } = useSettingsState();
+  const isHorizontal = orientation === ORIENTATION_H;
 
   return (
     <button
       onClick={addCard}
       className={cn(styles.addCardBtn, {
-        [styles.addCardBtnHorizontal]: orientation === ORIENTATION_H,
+        [styles.addCardBtnHorizontalCol2]: isHorizontal && cardsPerPage === 2,
+        [styles.addCardBtnVerticalCol2]: !isHorizontal && cardsPerPage === 2,
       })}>
       +
     </button>

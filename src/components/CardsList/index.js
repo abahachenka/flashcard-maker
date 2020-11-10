@@ -1,14 +1,16 @@
 import React from 'react';
 import Card from '@/components/Card';
-import AddCard from '../AddCard';
-import Sheet from '../Sheet';
+import AddCard from '@/components/AddCard';
+import cn from 'classnames';
+import Sheet from '@/components/Sheet';
 import { useCardState } from '@/context/CardContext';
 import { useSettingsState } from '@/context/SettingsContext';
+import { ORIENTATION_H } from '@/constants';
 import styles from './styles.scss';
 
 export default function CardsList() {
   const cards = useCardState();
-  const { cardsPerPage } = useSettingsState();
+  const { cardsPerPage, orientation } = useSettingsState();
 
   function generateCardsJSX(sheetId) {
     const jsx = [];
@@ -40,7 +42,12 @@ export default function CardsList() {
     for (let i = 0; i < sheetsNumber; i++) {
       sheet = (
         <Sheet key={i}>
-          <ul className={styles.cardsList}>{generateCardsJSX(i)}</ul>
+          <ul
+            className={cn(styles.cardsList, {
+              [styles.cardsListVertical]: orientation === ORIENTATION_H,
+            })}>
+            {generateCardsJSX(i)}
+          </ul>
         </Sheet>
       );
 

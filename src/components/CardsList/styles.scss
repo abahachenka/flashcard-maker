@@ -1,6 +1,15 @@
 .cardsList {
   display: flex;
-  margin: 2rem 0;
+  margin: 0;
   padding: 0;
   flex-wrap: wrap;
+  height: 100%;
+
+  &Horizontal {
+    flex-direction: row;
+  }
+
+  &Vertical {
+    flex-direction: column;
+  }
 }

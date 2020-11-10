@@ -8,8 +8,14 @@
     background: colors.$lightGrey;
   }
 
-  &Horizontal {
+  &HorizontalCol2 {
     composes: cardHorizontal from '@/components/Card/styles.scss';
+    composes: cardColumns2 from '@/components/Card/styles.scss';
+  }
+
+  &VerticalCol2 {
+    composes: cardVertical from '@/components/Card/styles.scss';
+    composes: cardColumns2 from '@/components/Card/styles.scss';
   }
 
   @media print {

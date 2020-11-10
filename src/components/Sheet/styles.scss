@@ -6,7 +6,16 @@
   display: block;
   margin: 0 auto;
   margin-bottom: 0.5cm;
-  width: sizes.$paperWidth;
-  height: sizes.$paperHeight;
-  border: 1px dashed colors.$black;
+  border: 1px solid colors.$black;
+  padding: 2rem;
+
+  &Vertical {
+    height: sizes.$paperWidth;
+    width: sizes.$paperHeight;
+  }
+
+  &Horizontal {
+    width: sizes.$paperWidth;
+    height: sizes.$paperHeight;
+  }
 }

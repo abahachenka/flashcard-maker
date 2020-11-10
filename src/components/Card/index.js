@@ -10,7 +10,7 @@ import styles from './styles.scss';
 function Card({ card }) {
   const [isEditMode, toggleEditMode] = useState(0);
   const { updateCard } = useCardActions();
-  const { orientation, type } = useSettingsState();
+  const { orientation, type, cardsPerPage } = useSettingsState();
   const fileRef = useRef();
   const imgRef = useRef();
 
@@ -56,9 +56,12 @@ function Card({ card }) {
 
   return (
     <li
-      className={cn(styles.card, {
-        [styles.cardHorizontal]: orientation === ORIENTATION_H,
-      })}>
+      className={cn(
+        styles.card,
+        { [styles.cardHorizontal]: orientation === ORIENTATION_H },
+        { [styles.cardVertical]: orientation !== ORIENTATION_H },
+        { [styles.cardColumns2]: cardsPerPage === 2 }
+      )}>
       {type === TYPE_IMG_TEXT ? (
         <div className={styles.cardImage}>
           {card.img ? (
