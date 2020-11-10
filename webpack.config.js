@@ -90,12 +90,12 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: __dirname + '/src/scss',
-        use: ['style-loader', CSSModuleLoader, 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, CSSModuleLoader, 'sass-loader'],
       },
       {
         test: /\.scss$/,
         include: __dirname + '/src/scss',
-        use: ['style-loader', CSSLoader, 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, CSSLoader, 'sass-loader'],
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
