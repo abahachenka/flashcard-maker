@@ -1,12 +1,19 @@
+@use '@/scss/variables/colors.scss' as colors;
+
 .removeBtn {
   background: transparent;
   border: none;
   display: inline;
-  height: 20px;
-  width: 20px;
   position: absolute;
-  right: 10px;
-  top: 17px;
+  font-size: 2.5rem;
+  right: 0.4em;
+  top: 0.4em;
+  line-height: 0.8;
+
+  &:hover {
+    color: colors.$darkGrey;
+    cursor: pointer;
+  }
 
   @media print {
     display: none;
