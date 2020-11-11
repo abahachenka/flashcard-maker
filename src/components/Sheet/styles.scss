@@ -5,16 +5,34 @@
   background: colors.$white;
   display: block;
   margin: 4rem auto;
-  border: 1px solid colors.$black;
-  padding: 2rem;
+  box-shadow: 0 0.5mm 2mm rgba(0, 0, 0, 0.3);
+  padding: 10mm;
+  overflow: hidden;
+  position: relative;
+  page-break-after: always;
 
-  &Vertical {
-    height: sizes.$paperWidth;
-    width: sizes.$paperHeight;
+  @media print {
+    margin: 0;
+    box-shadow: none;
   }
 
-  &Horizontal {
-    width: sizes.$paperWidth;
-    height: sizes.$paperHeight;
+  &Portrait {
+    height: sizes.$paperA5Height;
+    width: sizes.$paperA5Width;
+
+    @media print {
+      height: sizes.$paperA4Height;
+      width: sizes.$paperA4Width;
+    }
+  }
+
+  &Landscape {
+    width: sizes.$paperA5LandscapeWidth;
+    height: sizes.$paperA5LandscapeHeight;
+
+    @media print {
+      width: sizes.$paperA4LandscapeWidth;
+      height: sizes.$paperA4LandscapeHeight;
+    }
   }
 }

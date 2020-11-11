@@ -1,4 +1,9 @@
 @use './variables/typography' as typography;
+@use '@/scss/variables/colors.scss' as colors;
+
+@page {
+  margin: 0;
+}
 
 * {
   box-sizing: border-box;
@@ -12,4 +17,14 @@ body {
 
 body {
   font-family: typography.$fontFamilyDefault;
+  background: colors.$lightest;
+}
+
+@media print {
+  body.landscape {
+    width: 297mm;
+  }
+  body {
+    width: 210mm;
+  }
 }

@@ -9,4 +9,8 @@
   justify-content: center;
   border: 0.1rem solid colors.$darkGrey;
   border-radius: 0.3rem;
+
+  @media print {
+    display: none;
+  }
 }

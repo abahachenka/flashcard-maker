@@ -57,5 +57,5 @@ export default function CardsList() {
     return jsx;
   }
 
-  return <React.Fragment>{generateSheetsJSX()}</React.Fragment>;
+  return <div className='print'>{generateSheetsJSX()}</div>;
 }

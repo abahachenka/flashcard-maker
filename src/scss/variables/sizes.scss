@@ -1,6 +1,16 @@
 $min-width: 32rem; // 320px
 $max-width: 100rem; // 1000px
 
-// paper size
-$paperWidth: 21cm;
-$paperHeight: 14.8cm;
+// paper size (A5)
+$paperA5Width: 148mm;
+$paperA5Height: 209mm;
+
+$paperA5LandscapeWidth: 210mm;
+$paperA5LandscapeHeight: 147mm;
+
+// paper size (A4)
+$paperA4Width: 210mm;
+$paperA4Height: 296mm;
+
+$paperA4LandscapeWidth: 297mm;
+$paperA4LandscapeHeight: 209mm;
