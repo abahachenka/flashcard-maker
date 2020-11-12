@@ -1,10 +1,28 @@
+@use '@/scss/variables/colors.scss' as colors;
+
 .app {
   &Container {
     composes: container from '../../scss/box.scss';
   }
 }
 
-.print-btn {
+.printBtn {
+  display: block;
+  background: colors.$pacificBlue;
+  color: colors.$white;
+  border: none;
+  padding: 0.7em 1.5em 0.6em;
+  margin: 0 auto 3rem;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  border-radius: 0.3rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background: colors.$pacificBlueDark;
+  }
+
   @media print {
     display: none;
   }
